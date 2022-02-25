@@ -1,41 +1,11 @@
 <?php
 
-use Illuminate\Routing\Route;
-//use Illuminate\Support\Facades\Route;
-
-Route::resource('produtos', 'api\ProdutoController');
-
-
-//use Illuminate\Routing\Route;
-
-/*
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
-use App\Models\Produto;
-*/
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-/*
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-*/
-
-
-/*
-Route::get('/produtos', function () {
-});
-*/
-
-
+Route::get('/produtos', [ProdutoController::class, 'index']); // Traz os produtos do bd
+Route::post('/produtos', [ProdutoController::class, 'store']); // Faz o cadastro no bd
+Route::get('/produtos/{id}', [ProdutoController::class, 'show']); // retorna um registro específico através do $id
+Route::put('/produtos/{id}', [ProdutoController::class, 'update']); // Edita um registro em específico
+Route::delete('/produtos/{id}', [ProdutoController::class, 'destroy']); // exclui um registro
+Route::get('/produtos/search/{produto}', [ProdutoController::class, 'search']); // Faz a consulta pelo nome do produto
